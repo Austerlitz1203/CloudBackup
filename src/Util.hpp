@@ -3,6 +3,7 @@
 #include <fstream>
 #include <vector>
 #include<sys/stat.h>
+#include<experimental/filesystem>
 #include"bundle.h"
 
 namespace cloud
@@ -10,7 +11,8 @@ namespace cloud
     using std::string;
     using std::cout;
     using std::endl;
-
+    namespace fs = std::experimental::filesystem;
+    
     class FileUtil
     {
     public:
@@ -159,6 +161,29 @@ namespace cloud
             {
                 cout<<"UnCompress SetContent error"<<endl;
                 return false;
+            }
+            return true;
+        }
+
+
+        bool Exists()
+        {
+            return fs::exists(_filename);
+        }
+
+        bool CreateDirectory()
+        {
+            if(this->Exists()) return true;
+            return fs::create_directories(_filename);
+        }
+
+        bool ScanDirectory(std::vector<std::string> *array)
+        {
+            for(auto& p : fs::directory_iterator(_filename))
+            {
+                if(fs::is_directory(p) == true) continue;
+                // relative_path 带有路径的文件名
+                array->push_back(fs::path(p).relative_path().string());
             }
             return true;
         }

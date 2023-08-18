@@ -19,12 +19,24 @@ void FileUtilTest(const std::string& filename)
     // cloud::FileUtil dfu("1.txt");
     // dfu.SetContent(body);
 
-    string packname = filename + ".lz";
-    cloud::FileUtil fu(filename);
-    fu.Compress(packname);
 
-    cloud::FileUtil pfu(packname);
-    pfu.UnCompress("2.txt");
+
+    // string packname = filename + ".lz";
+    // cloud::FileUtil fu(filename);
+    // fu.Compress(packname);
+
+    // cloud::FileUtil pfu(packname);
+    // pfu.UnCompress("2.txt");
+
+    cloud::FileUtil fu(filename);
+    fu.CreateDirectory();
+    vector<string> array;
+    fu.ScanDirectory(&array);
+    for(auto s:array)
+    {
+        cout<<s<<endl;
+    }
+
     return;
 }
 
