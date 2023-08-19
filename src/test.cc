@@ -41,8 +41,34 @@ void FileUtilTest(const std::string& filename)
 }
 
 
+void JsonUtilTest()
+{
+    Json::Value root;
+    float score[] = {22.5,80,99.5};
+    root["姓名"] = "小明";
+    root["年龄"] = 20;
+    root["成绩"].append(score[0]);
+    root["成绩"].append(score[1]);
+    root["成绩"].append(score[2]);
+    string s;
+    cloud::JsonUtil::Serialize(root,&s);
+    cout<<s<<endl;
+
+    Json::Value val;
+    cloud::JsonUtil::UnSerialize(s,&val);
+    cout<<val["姓名"].asString()<<endl;
+    cout<<val["年龄"].asFloat()<<endl;
+    for(int i=0;i<root["成绩"].size();i++)
+    {
+        cout<<root["成绩"][i]<<endl;
+    }
+    return;
+}
+
 int main(int argc,char* argv[])
 {
-    FileUtilTest(argv[1]);
+    //FileUtilTest(argv[1]);
+    JsonUtilTest();
+
     return 0;
 }
