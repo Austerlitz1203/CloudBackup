@@ -1,3 +1,6 @@
+#ifndef __MY_UTIL__
+#define __MY_UTIL__
+
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -220,7 +223,7 @@ namespace cloud
             bool ret = cr->parse(str.c_str(),str.c_str()+str.size(),root,&err);
             if(ret == false)
             {
-                cout<<"UnSerialize parse error"<<endl;
+                cout<<"UnSerialize parse error:"<< err <<endl;
                 return false;
             }
             return true;
@@ -228,3 +231,5 @@ namespace cloud
     };
 
 }
+
+#endif

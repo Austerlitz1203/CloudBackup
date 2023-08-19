@@ -1,4 +1,5 @@
 #include"Util.hpp"
+#include"Config.hpp"
 #include<iostream>
 #include<string>
 using namespace std;
@@ -65,10 +66,23 @@ void JsonUtilTest()
     return;
 }
 
+void ConfigTest()
+{
+    cloud::Config *config = cloud::Config::GetInstance();
+    cout<<config->GetHotTime()<<endl;
+    cout<<config->GetServerPort()<<endl;
+    cout<<config->GetServerIP()<<endl;
+    cout<<config->GetDownloadPrefix()<<endl;
+    cout<<config->GetPackFileSuffix()<<endl;
+    cout<<config->GetPackDir()<<endl;
+    cout<<config->GetBackDir()<<endl;
+    cout<<config->GetBackupFile()<<endl;
+}
+
 int main(int argc,char* argv[])
 {
     //FileUtilTest(argv[1]);
-    JsonUtilTest();
-
+    //JsonUtilTest();
+    ConfigTest();
     return 0;
 }
