@@ -1,5 +1,6 @@
 #include"Util.hpp"
 #include"Config.hpp"
+#include"data.hpp"
 #include<iostream>
 #include<string>
 using namespace std;
@@ -79,10 +80,72 @@ void ConfigTest()
     cout<<config->GetBackupFile()<<endl;
 }
 
+void DataTest(const string& filename)
+{
+    // cloud::BackupInfo info;
+    // info.NewBackupInfo(filename);
+    // cloud::DataManager dm;
+    // dm.Insert(info);
+
+    // cloud::BackupInfo tmp;
+    // dm.GetOneByURL("/download/bundle.h",&tmp);
+    // cout << "----------------------getonebyurl---------------------" << endl;
+    // cout<<tmp.pack_flag<<endl;
+    // cout<<tmp.atime<<endl;
+    // cout<<tmp.mtime<<endl;
+    // cout<<tmp.pack_path<<endl;
+    // cout<<tmp.real_path<<endl;
+    // cout << tmp.fsize<< endl;
+    // cout << tmp.url<< endl;
+
+    // info.pack_flag = true;
+    // dm.Update(info);
+    // vector<cloud::BackupInfo> array;
+    // dm.GetAll(&array);
+    // cout << "----------------------getall---------------------" << endl;
+    // for(auto &a:array)
+    // {
+    //     cout << a.pack_flag << endl;
+    //     cout << a.atime << endl;
+    //     cout << a.mtime << endl;
+    //     cout << a.pack_path << endl;
+    //     cout << a.real_path << endl;
+    //     cout << a.fsize << endl;
+    //     cout << a.url << endl;
+    // }
+
+    // cout<<"----------------------realpath---------------------"<<endl;
+    // dm.GetOneByRealpath(filename,&tmp);
+    // cout << tmp.pack_flag << endl;
+    // cout << tmp.atime << endl;
+    // cout << tmp.mtime << endl;
+    // cout << tmp.pack_path << endl;
+    // cout << tmp.real_path << endl;
+    // cout << tmp.fsize << endl;
+    // cout << tmp.url << endl;
+
+
+    cloud::DataManager dm;
+    vector<cloud::BackupInfo> array;
+    dm.GetAll(&array);
+    cout << "----------------------getall---------------------" << endl;
+    for(auto &a:array)
+    {
+        cout << a.pack_flag << endl;
+        cout << a.atime << endl;
+        cout << a.mtime << endl;
+        cout << a.pack_path << endl;
+        cout << a.real_path << endl;
+        cout << a.fsize << endl;
+        cout << a.url << endl;
+    }
+}
+
 int main(int argc,char* argv[])
 {
     //FileUtilTest(argv[1]);
     //JsonUtilTest();
-    ConfigTest();
+    //ConfigTest();
+    DataTest(argv[1]);
     return 0;
 }

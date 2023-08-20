@@ -1,5 +1,5 @@
-test:test.cc bundle.cpp
-	g++ $^ -o $@ -lpthread -lstdc++fs -ljsoncpp
+test:test.cc 
+	g++ $^ -o $@ -L./lib -lpthread -lstdc++fs -ljsoncpp -lbundle
 .PHONY:clean
 clean:
 	rm -f test
