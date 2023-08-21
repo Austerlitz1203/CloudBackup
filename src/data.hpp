@@ -178,6 +178,7 @@ namespace cloud
         std::unordered_map<string, BackupInfo> _table;
     };
 
+
 } // namespace cloud
 
 #endif

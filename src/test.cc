@@ -1,6 +1,7 @@
 #include"Util.hpp"
 #include"Config.hpp"
 #include"data.hpp"
+#include"hot.hpp"
 #include<iostream>
 #include<string>
 using namespace std;
@@ -141,11 +142,20 @@ void DataTest(const string& filename)
     }
 }
 
+cloud::DataManager *_data;
+void HotTest()
+{
+    _data = new cloud::DataManager();
+    cloud::HotManager hot;
+    hot.RunModle();
+}
+
 int main(int argc,char* argv[])
 {
     //FileUtilTest(argv[1]);
     //JsonUtilTest();
     //ConfigTest();
-    DataTest(argv[1]);
+    //DataTest(argv[1]);
+    HotTest();
     return 0;
 }

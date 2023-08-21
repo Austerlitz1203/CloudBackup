@@ -1,6 +1,6 @@
 #ifndef __MY_UTIL__
 #define __MY_UTIL__
-
+#include<stdio.h>
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -24,6 +24,13 @@ namespace cloud
         FileUtil(const string &filename = nullptr)
             : _filename(filename)
         {
+        }
+
+        bool remove()
+        {
+            if(this->Exists() == false) return true;
+            std::remove(_filename.c_str());
+            return true;
         }
 
         int64_t FileSize()
