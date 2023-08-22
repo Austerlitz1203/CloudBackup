@@ -2,6 +2,7 @@
 #include"Config.hpp"
 #include"data.hpp"
 #include"hot.hpp"
+#include"service.hpp"
 #include<iostream>
 #include<string>
 using namespace std;
@@ -145,17 +146,24 @@ void DataTest(const string& filename)
 cloud::DataManager *_data;
 void HotTest()
 {
-    _data = new cloud::DataManager();
     cloud::HotManager hot;
     hot.RunModle();
 }
 
+void ServiceTest()
+{
+    cloud::Service srv;
+    srv.RunModule();
+}
+
 int main(int argc,char* argv[])
 {
+    _data = new cloud::DataManager();
     //FileUtilTest(argv[1]);
     //JsonUtilTest();
     //ConfigTest();
     //DataTest(argv[1]);
-    HotTest();
+    //HotTest();
+    ServiceTest();
     return 0;
 }
