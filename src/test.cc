@@ -5,6 +5,7 @@
 #include"service.hpp"
 #include<iostream>
 #include<string>
+#include<thread>
 using namespace std;
 
 void FileUtilTest(const std::string& filename)
@@ -74,7 +75,7 @@ void ConfigTest()
     cloud::Config *config = cloud::Config::GetInstance();
     cout<<config->GetHotTime()<<endl;
     cout<<config->GetServerPort()<<endl;
-    cout<<config->GetServerIP()<<endl;
+    cout<<config->GetServerIp()<<endl;
     cout<<config->GetDownloadPrefix()<<endl;
     cout<<config->GetPackFileSuffix()<<endl;
     cout<<config->GetPackDir()<<endl;
@@ -164,6 +165,10 @@ int main(int argc,char* argv[])
     //ConfigTest();
     //DataTest(argv[1]);
     //HotTest();
-    ServiceTest();
+    //ServiceTest();
+    thread thread_hot(HotTest);
+    thread thread_service(ServiceTest);
+    thread_hot.join();
+    thread_service.join();
     return 0;
 }

@@ -82,7 +82,7 @@ namespace cloud
             return _server_port;
         }
 
-        string GetServerIP()
+        string GetServerIp()
         {
             return _server_ip;
         }
