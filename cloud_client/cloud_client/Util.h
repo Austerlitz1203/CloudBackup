@@ -67,12 +67,13 @@ namespace cloud
 
         string FileName()
         {
-            auto pos = _filename.find_last_of("/");
+            auto pos = _filename.find_last_of("\\");
             if (pos == string::npos)
             {
                 return _filename;
             }
             return _filename.substr(pos + 1);
+            // return fs::path(_filename).filename().string();
         }
 
         bool GetPosLen(string* body, size_t pos, size_t len)
